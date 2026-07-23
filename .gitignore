@@ -12,3 +12,8 @@ dist
 public/images/wallpaper.jpg
 public/images/Bernardo.png
 public/images/avatar.webp
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
