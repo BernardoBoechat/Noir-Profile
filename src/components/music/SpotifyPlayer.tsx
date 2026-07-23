@@ -37,27 +37,32 @@ export function SpotifyPlayer({
     );
 
   return (
-    <section aria-label="Música no Spotify" className="w-full max-w-full">
+    <section aria-label="Música no Spotify" className="min-w-0 max-w-full">
       {isPlaylist && (
-        <h2 className="mb-3 text-sm font-medium text-white/70">
-          Minha playlist no Spotify
-        </h2>
+        <div className="mb-2.5 flex items-center justify-between gap-3 px-0.5">
+          <h2 className="truncate text-xs font-medium uppercase tracking-[.1em] text-white/55 min-[380px]:text-sm min-[380px]:normal-case min-[380px]:tracking-normal min-[380px]:text-white/70">
+            Minha playlist no Spotify
+          </h2>
+          <span className="shrink-0 text-[9px] uppercase tracking-widest text-white/25 min-[480px]:hidden">
+            Player compacto
+          </span>
+        </div>
       )}
       <div
         className={
           isPlaylist
-            ? "h-[300px] w-full max-w-full overflow-hidden rounded-xl bg-[#121212] sm:h-[352px]"
-            : "h-[152px] w-full max-w-full overflow-hidden rounded-xl bg-[#121212]"
+            ? "h-[152px] w-full min-w-0 max-w-full overflow-hidden rounded-xl bg-[#121212] min-[480px]:h-[352px]"
+            : "h-[152px] w-full min-w-0 max-w-full overflow-hidden rounded-xl bg-[#121212]"
         }
       >
         <iframe
           title="Player de música do Spotify"
           src={embedUrl}
           width="100%"
-          height="100%"
+          height={isPlaylist ? 352 : 152}
           loading="lazy"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          className="block size-full max-w-full border-0 bg-[#121212]"
+          className="block size-full min-w-0 max-w-full border-0 bg-[#121212]"
           style={{ colorScheme: "dark" }}
         />
       </div>
