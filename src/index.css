@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  background: #000;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100dvh;
+  background: #000;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+.safe-page {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+.modal-safe-area {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+button,
+a,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+input[type="range"] {
+  min-width: 0;
+  height: 3px;
+  flex: 1;
+  cursor: pointer;
+}
+.wallpaper-image {
+  object-position: 55% center;
+  animation: wallpaper-reveal 1.8s ease-out both;
+}
+.wallpaper-shade {
+  animation: shade-reveal 1.8s ease-out both;
+}
+.loading-screen {
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease;
+}
+.loading-screen.is-exiting {
+  opacity: 0;
+  transform: scale(1.02);
+}
+.profile-card.is-visible {
+  animation: card-in 450ms ease-out both;
+}
+.loader-avatar {
+  clip-path: circle(0% at 50% 50%);
+  animation: avatar-reveal 0.9s 0.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.loader-avatar-shell {
+  animation: loader-pulse 1.4s 0.9s ease-in-out infinite alternate;
+}
+.loader-progress {
+  transform-origin: left;
+  animation: loader-progress 2.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+@keyframes loader-pulse {
+  from {
+    transform: scale(0.96);
+    opacity: 0.72;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes avatar-reveal {
+  from {
+    clip-path: circle(0% at 50% 50%);
+    transform: scale(0.82);
+  }
+  to {
+    clip-path: circle(50% at 50% 50%);
+    transform: scale(1);
+  }
+}
+@keyframes wallpaper-reveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes shade-reveal {
+  from {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes loader-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .loading-screen .loader-avatar-shell {
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .loading-screen h1 {
+    font-size: 1.75rem;
+  }
+  .loading-screen p {
+    margin-top: 0.5rem;
+  }
+  .loading-screen [aria-hidden="true"] {
+    margin-top: 1rem;
+  }
+}
+.link-card::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  transform: scaleX(0);
+  transition: transform 260ms ease;
+}
+.link-card:hover::after,
+.link-card:focus-visible::after {
+  transform: scaleX(1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .interactive {
+    transition-property:
+      color, background-color, border-color, opacity, transform;
+    transition-duration: 180ms;
+    transition-timing-function: ease;
+  }
+  .interactive:hover {
+    transform: translateY(-2px);
+  }
+  .interactive:active {
+    transform: translateY(0);
+  }
+}
+@media (min-width: 640px) {
+  .wallpaper-image {
+    object-position: center center;
+  }
+}
+@media (min-width: 1280px) {
+  .wallpaper-image {
+    object-position: 50% 48%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

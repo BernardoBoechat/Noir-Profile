@@ -1,0 +1,14 @@
+node_modules
+.next
+out
+dist
+.env*
+!.env.example
+*.log
+*.tsbuildinfo
+.agents
+
+# Arquivos-fonte grandes; o site usa as versões otimizadas.
+public/images/wallpaper.jpg
+public/images/Bernardo.png
+public/images/avatar.webp
