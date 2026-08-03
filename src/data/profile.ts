@@ -46,7 +46,7 @@ export const profileData: ProfileData = {
       id: "portfolio",
       title: "Portfólio",
       description: "Conheça meus projetos e trabalhos.",
-      url: "https://bernardo-site.bensec.workers.dev/",
+      url: "https://bernardo.sky-code.site/",
       icon: "code",
       badge: "NOVO",
     },
